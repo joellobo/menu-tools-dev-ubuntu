@@ -2,5 +2,5 @@
 
 . ambiente.conf
 
-cd $SAJ_DEV_HOME/bin
+cd $DEV_HOME/bin
 $JDK_HOME/bin/java -jar $JAVADECOMPILER_HOME/jd-gui.jar
