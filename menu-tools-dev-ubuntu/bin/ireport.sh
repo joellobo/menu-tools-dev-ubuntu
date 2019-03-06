@@ -2,5 +2,5 @@
 
 . ambiente.conf
 
-cd $SAJ_DEV_HOME/bin
+cd $DEV_HOME/bin
 $IREPORT_HOME/bin/ireport
