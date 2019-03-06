@@ -2,5 +2,5 @@
 
 . ambiente.conf
 
-cd $SAJ_DEV_HOME/bin
+cd $DEV_HOME/bin
 $DBEAVER_HOME/dbeaver -vm $JDK_HOME/bin/java
