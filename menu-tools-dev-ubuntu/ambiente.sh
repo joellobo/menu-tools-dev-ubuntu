@@ -1,21 +1,24 @@
 #!/bin/bash
+
 # SETANDO VARIAVEIS
 echo "###############################################"
 echo "# SETANDO VARIAVEIS"
-SAJ_DIR=~/dev/saj
-SAJ_APPS_DIR=$SAJ_DIR/apps
+
+DEV_DIR=~/dev
+DEV_APPS_DIR=$DEV_DIR/apps
 ECLIPSE_URL=http://eclipse.c3sl.ufpr.br/technology/epp/downloads/release/2018-09/R/eclipse-jee-2018-09-linux-gtk-x86_64.tar.gz
 DBEAVER_URL=https://dbeaver.io/files/dbeaver-ce-latest-linux.gtk.x86_64.tar.gz
 SOAPUI_URL=https://s3.amazonaws.com/downloads.eviware/soapuios/5.4.0/SoapUI-x64-5.4.0.sh
 JD_URL=https://github.com/java-decompiler/jd-gui/releases/download/v1.4.0/jd-gui-1.4.0.jar
-ALM_PLUGIN_URL=http://10.139.3.117/packages/RTC-Client-p2Repo-6.0.4.zip
-JBOSS_URL=http://10.139.3.117/packages/jboss-6.4.1-eap.tar.gz
 SQLPA_URL=http://www.bestofbi.com/downloads/architect/1.0.8/SQL-Power-Architect-generic-jdbc-1.0.8.tar.gz
 
+ALM_PLUGIN_URL=http://10.139.3.117/packages/RTC-Client-p2Repo-6.0.4.zip
+JBOSS_URL=http://10.139.3.117/packages/jboss-6.4.1-eap.tar.gz
+
 echo "###############################################"
-echo "# BACKUP ~/DEV/SAJ/APPS-$(date +%Y-%m-%d-%H-%M)"
-mv $SAJ_APPS_DIR ~/dev/saj/apps-$(date +%Y-%m-%d-%H-%M)
-mkdir -p $SAJ_DIR/apps/packages
+echo "# BACKUP ~/DEV/APPS-$(date +%Y-%m-%d-%H-%M)"
+mv $DEV_APPS_DIR ~/dev/apps-$(date +%Y-%m-%d-%H-%M)
+mkdir -p $DEV_DIR/apps/packages
 
 echo "###############################################"
 echo "# 1. SDKMAN"
@@ -32,8 +35,8 @@ fi;
 echo "###############################################"
 echo "# 2. Instalando Eclipse"
 #eclipse java EE
-cd $SAJ_APPS_DIR
-wget $ECLIPSE_URL -P $SAJ_APPS_DIR
+cd $DEV_APPS_DIR
+wget $ECLIPSE_URL -P $DEV_APPS_DIR
 tar zxvf ${ECLIPSE_URL##*/}
 mv ${ECLIPSE_URL##*/} packages
 
@@ -59,37 +62,37 @@ mv ${ALM_PLUGIN_URL##*/} ../packages
 
 echo "###############################################"
 echo "# 4. DBEAVER"
-cd $SAJ_APPS_DIR
+cd $DEV_APPS_DIR
 wget $DBEAVER_URL 
 tar zxvf ${DBEAVER_URL##*/}
 mv ${DBEAVER_URL##*/} packages
 
 echo "###############################################"
 echo "# 5. SOAPUI"
-cd $SAJ_APPS_DIR
+cd $DEV_APPS_DIR
 mkdir -p soapui
 wget $SOAPUI_URL 
-sh ${SOAPUI_URL##*/} -q -dir $SAJ_APPS_DIR/soapui
+sh ${SOAPUI_URL##*/} -q -dir $DEV_APPS_DIR/soapui
 mv ${DBEAVER_URL##*/} packages
-mv -v ~/popular-apis ~/WSDL-WADL ~/Sample*soapui-project.xml $SAJ_APPS_DIR/soapui
+mv -v ~/popular-apis ~/WSDL-WADL ~/Sample*soapui-project.xml $DEV_APPS_DIR/soapui
 
 echo "###############################################"
 echo "# 6. JBOSS"
-cd $SAJ_APPS_DIR
+cd $DEV_APPS_DIR
 wget $JBOSS_URL --no-passive-ftp
 tar zxvf ${JBOSS_URL##*/}
 mv ${JBOSS_URL##*/} packages
 
 echo "###############################################"
 echo "# 7. JD"
-cd $SAJ_APPS_DIR
+cd $DEV_APPS_DIR
 mkdir -p jd
 cd jd
 wget $JD_URL
 
 echo "###############################################"
 echo "# 8. SQLPOWERARQUITECT"
-cd $SAJ_APPS_DIR
+cd $DEV_APPS_DIR
 wget $SQLPA_URL 
 tar zxvf ${SQLPA_URL##*/}
 mv ${SQLPA_URL##*/} packages
